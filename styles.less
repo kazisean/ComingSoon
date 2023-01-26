@@ -1,0 +1,103 @@
+// @Le Vars ----------------------
+@yellow: #fdfafa;
+@shadow-for-yellow: #F35747;
+
+@blue: #90f0d2;
+@shadow-for-blue: #000000;
+// @end le vars ----------------------
+
+body {
+	font-family: 'Merriweather Sans', sans-serif;
+	background-color: #414141;
+	color: #fff;
+}
+
+.wrapper {
+	width: 320px;
+	margin: 5em auto;
+	text-align: center;
+}
+
+.crazy-alert {
+	font-size: 22px;
+}
+.bigger {
+	display: block;
+	margin-bottom: .25em;
+	font-size: 2.5em;
+	letter-spacing: 0.2em;
+	color: @yellow;
+	text-shadow:
+		1px  1px  0 fade(@shadow-for-yellow, 100%),
+		2px  2px  0 fade(@shadow-for-yellow, 90%),
+		3px  3px  0 fade(@shadow-for-yellow, 80%),
+		4px  4px  0 fade(@shadow-for-yellow, 70%),
+		5px  5px  0 fade(@shadow-for-yellow, 60%),
+		6px  6px  0 fade(@shadow-for-yellow, 50%),
+		7px  7px  0 fade(@shadow-for-yellow, 40%),
+		8px  8px  0 fade(@shadow-for-yellow, 30%),
+		9px  9px  0 fade(@shadow-for-yellow, 20%),
+		10px 10px 0 fade(@shadow-for-yellow, 10%);
+	
+	animation: jumptext 1s steps(8, start) infinite;
+  transition: all .2s ease;
+  
+  &:hover {
+    animation: none;
+    letter-spacing: normal;
+  }
+}
+.regular {
+	display: block;
+	// commented out cuz it's too annoying but i likes it
+	//-webkit-animation: text-flasher 1s linear infinite alternate;
+}
+.regular + .regular {
+	animation-delay: .5s;
+}
+.buzz {
+	display: inline-block;
+	text-shadow: 2px 0 0 fade(#fff, 30%), -2px 0 0 fade(#fff, 30%);
+	animation: buzz .04s linear infinite alternate;
+  transition: all .2s ease;
+  
+  &:hover {
+    -webkit-animation: none;
+    text-shadow: none;
+  }
+}
+
+// Le animations
+@keyframes jumptext {
+	0% {
+		transform: rotate(-5deg);
+		letter-spacing: normal;
+	}
+	50% {
+		transform: rotate(5deg);
+		color: @blue;
+		letter-spacing: 0.1em;
+		text-shadow:
+		1px  1px  0 fade(@shadow-for-blue, 100%),
+		2px  2px  0 fade(@shadow-for-blue, 80%),
+		3px  3px  0 fade(@shadow-for-blue, 60%),
+		4px  4px  0 fade(@shadow-for-blue, 40%),
+		5px  5px  0 fade(@shadow-for-blue, 20%);
+	}
+	100% {
+		transform: rotate(-5deg);
+		color: @yellow;
+		letter-spacing: normal;
+	}
+}
+@keyframes text-flasher {
+	0%   {  }
+	50%  { text-shadow: 0 0 2px #000, 0 0 70px fade(#fff, 50%); }
+	60%  { text-shadow: 0 0 2px #000, 0 0 10px fade(#fff, 50%); }
+	100% { text-shadow: 0 0 2px #000, 0 0 70px fade(#fff, 50%); }
+}
+
+@keyframes buzz {
+	0%   { transform: translateX(-1px); }
+	100% { transform: translateX(1px); }
+} 
